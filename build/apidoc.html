@@ -61,12 +61,44 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.json-select">module json-select</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-select.json-select">
+            function <span class="apidocSignatureSpan"></span>json-select
+            <span class="apidocSignatureSpan">(path, opts)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.json-select" id="apidoc.module.json-select">module json-select</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-select.json-select" id="apidoc.element.json-select.json-select">
+        function <span class="apidocSignatureSpan"></span>json-select
+        <span class="apidocSignatureSpan">(path, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">json-select = function (path, opts) {
+  if(isString(path)) path = parse(path)
+  var post = path.slice()
+  var pre = []
+  while(post[0] &#x26;&#x26; (!isObject(post[0]) || isSpecial(post[0], {recurse: true})))
+    pre.push(post.shift())
+
+  return JSONStream.parse(pre, function (obj) {
+    return select(obj, post, opts)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 
